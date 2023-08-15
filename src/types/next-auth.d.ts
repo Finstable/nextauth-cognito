@@ -1,4 +1,18 @@
 import NextAuth, { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Profile {
+    identities?: { providerType: string }[] & Profile;
+  }
+  interface Session {
+    user: {
+      id: number;
+      accessToken: string;
+      idToken: string;
+    } & DefaultSession["user"];
+  }
+}
+
 import { JWT } from "next-auth/jwt";
 
 declare module "next-auth/jwt" {
@@ -6,17 +20,5 @@ declare module "next-auth/jwt" {
   interface JWT {
     /** OpenID ID Token */
     idToken?: string;
-  }
-}
-
-declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
-  interface Session {
-    user: {
-      /** The user's postal address. */
-      address: string;
-    } & DefaultSession["user"];
   }
 }

@@ -1,8 +1,8 @@
 import SignInButton from "@/components/SignInButton";
 
-const SignInPage = () => {
+const SignInPage = async () => {
   return (
-    <div>
+    <div className="flex flex-col h-screen items-center justify-center">
       <SignInButton />
     </div>
   );

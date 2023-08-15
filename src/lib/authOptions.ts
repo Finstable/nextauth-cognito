@@ -12,5 +12,18 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  callbacks: {},
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
+    async session({ session, user, token }) {
+      session.user.id = token.id as number;
+      session.user.accessToken = token.accessToken as string;
+      session.user.idToken = token.idToken as string;
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return token;
+    },
+  },
 };
