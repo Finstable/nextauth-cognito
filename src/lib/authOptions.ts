@@ -9,6 +9,6 @@ export const authOptions: NextAuthOptions = {
       issuer: process.env.COGNITO_ISSUER,
     }),
   ],
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
 };
