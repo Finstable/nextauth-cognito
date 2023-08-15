@@ -9,9 +9,11 @@ import { authOptions } from "pages/api/auth/[...nextauth]";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function Home() {
-  //   const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   return (
-    <div>Home page</div>
+    <div>
+      <LoginButton session={session} />
+    </div>
     // <main className={styles.main}>
     //     <div style={{ border: "2px solid red", padding: "10px" }}>
     //         <LoginButton session={session} />
