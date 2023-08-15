@@ -10,9 +10,5 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   secret: process.env.AUTH_SECRET,
-  callbacks: {
-    session({ session, token, user }) {
-      return session; // The return type will match the one returned in `useSession()`
-    },
-  },
+  callbacks: {},
 };
