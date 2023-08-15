@@ -7,6 +7,8 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.COGNITO_CLIENT_ID || "",
       clientSecret: process.env.COGNITO_CLIENT_SECRET || "",
       issuer: process.env.COGNITO_ISSUER,
+      checks: ["state", "pkce", "nonce"],
+      idToken: true,
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
