@@ -9,6 +9,7 @@ export const authOptions: NextAuthOptions = {
       issuer: process.env.COGNITO_ISSUER,
     }),
   ],
+  secret: process.env.AUTH_SECRET,
   callbacks: {
     session({ session, token, user }) {
       return session; // The return type will match the one returned in `useSession()`
