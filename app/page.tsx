@@ -12,6 +12,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   return (
     <div>
+      Updated
       <LoginButton session={session} />
     </div>
     // <main className={styles.main}>
