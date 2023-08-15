@@ -14,7 +14,12 @@ export default function LoginButton({ session }: { session: Session | null }) {
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn("cognito")}>Sign in</button>
+      {window.origin}
+      <button
+        onClick={() => signIn("cognito", { callbackUrl: `${window.origin}` })}
+      >
+        Sign in
+      </button>
     </>
   );
 }
