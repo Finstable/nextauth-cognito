@@ -13,13 +13,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: {
   children: React.ReactNode;
+  session: any;
 }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning className={inter.className}>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider session={session}>{children}</NextAuthProvider>
       </body>
     </html>
   );
