@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 const ProtectView = () => {
   const { data: session } = useSession();
 
-  if (!session) return <div>Please sign in...</div>;
+  if (!session) return <div>Please sign in....</div>;
 
   return (
     <div className="bg-red-200 flex flex-col items-center justify-center">
