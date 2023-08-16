@@ -8,7 +8,7 @@ const ProtectView = () => {
 
   return (
     <div className="bg-red-200 flex flex-col items-center justify-center">
-      <p>Protect Page</p>
+      <p>Protect Page ...</p>
       <p>Hi {session.user.name}!</p>
     </div>
   );
