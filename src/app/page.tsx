@@ -1,15 +1,9 @@
-import Profile from "@/components/Profile";
-import SignOutButton from "@/components/SignOutButton";
-import Link from "next/link";
+import BaseLayout from "@/components/Layout/BaseLayout";
 
 export default async function Home() {
   return (
-    <div className="flex flex-col h-screen items-center justify-center">
-      <Profile />
-      <Link href={"/signin"} className="underline">
-        Go to sign in
-      </Link>
-      <SignOutButton />
-    </div>
+    <BaseLayout>
+      <div className="flex items-center justify-center h-screen">Homepage</div>
+    </BaseLayout>
   );
 }

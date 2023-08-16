@@ -4,31 +4,12 @@ import CognitoProvider from "next-auth/providers/cognito";
 export const authOptions: NextAuthOptions = {
   providers: [
     CognitoProvider({
-      clientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || "",
-      clientSecret: process.env.NEXT_PUBLIC_COGNITO_CLIENT_SECRET || "",
-      issuer: process.env.NEXT_PUBLIC_COGNITO_ISSUER,
+      clientId: process.env.COGNITO_CLIENT_ID || "",
+      clientSecret: process.env.COGNITO_CLIENT_SECRET || "",
+      issuer: process.env.COGNITO_ISSUER,
       checks: ["state", "pkce", "nonce"],
-      idToken: true,
+      // idToken: true,
     }),
   ],
-  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
-
-  callbacks: {
-    async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
-      // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url;
-      return baseUrl;
-    },
-    async session({ session, user, token }) {
-      session.user.id = token.id as number;
-      session.user.accessToken = token.accessToken as string;
-      session.user.idToken = token.idToken as string;
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token;
-    },
-  },
+  secret: process.env.NEXTAUTH_SECRET,
 };

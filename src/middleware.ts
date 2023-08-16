@@ -1,7 +1,7 @@
 import withAuth from "next-auth/middleware";
 
 export default withAuth({
-  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
+  //   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     authorized: ({ token }) => !!token,
   },
@@ -9,3 +9,7 @@ export default withAuth({
     signIn: "/signin",
   },
 });
+// See "Matching Paths" below to learn more
+export const config = {
+  matcher: "/:path*",
+};
